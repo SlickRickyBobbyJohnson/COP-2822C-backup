@@ -1,119 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math Comparison Program</title>
+</head>
+<body>
+  <h1>Enter Two Numbers</h1>
+  <label for="x">Enter first number (x): </label>
+  <input type="number" id="x"><br><br>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-   <head>
-      <!-- 
-      New Perspectives on HTML and CSS
-      Tutorial 9
-      Case Problem 1
+  <label for="y">Enter second number (y): </label>
+  <input type="number" id="y"><br><br>
 
-      Kelsey's Breakfast Menu
-      Author: michael dejean
-      Date:   7/16/25
+  <button onclick="calculate()">Calculate</button>
 
-      Filename:         breakfst.htm
-      Supporting files: breakfst.jpg, tan.jpg
-      -->
-      <title>Kelsey's Breakfast Menu</title>
-      <link rel="stylesheet" type="text/css" href="kdstyles.css" />
-   </head>
+  <h2>Results:</h2>
+  <p id="sumResult"></p>
+  <p id="productResult"></p>
+  <p id="comparisonResult"></p>
 
-   <body background="tan.jpg">
-      <h5 align="center">
-         <img src="breakfst.jpg" usemap="#Menu" alt="Breakfast Menu">
-         <br>
-         Click the Breakfast, Lunch, or Dinner menu
+  <script>
+    function calculate() {
+      const x = parseFloat(document.getElementById("x").value);
+      const y = parseFloat(document.getElementById("y").value);
 
-         <map name="Menu">
-            <area shape="rect" coords="20,40,156,77" href="breaktxt.htm" alt="Breakfast">
-            <area shape="rect" coords="241,40,336,77" href="lunchtxt.htm" alt="Lunch">
-            <area shape="rect" coords="464,40,568,77" href="dinnrtxt.htm" alt="Dinner">
-         </map>
+      if (isNaN(x) || isNaN(y)) {
+        alert("Please enter two valid numbers.");
+        return;
+      }
 
-      </h5>
+      const sum = x + y;
+      const product = x * y;
+      let comparison = "";
 
-      <h1 align="center">
-         <font color="green">
-            Breakfast Menu
-         </font>
-      </h1>
+      if (x > y) {
+        comparison = "x is bigger than y.";
+      } else if (y > x) {
+        comparison = "y is bigger than x.";
+      } else {
+        comparison = "x and y are equal.";
+      }
 
-      <h5 align="center">
-         Served 6:30 a.m. - 11:00 a.m.
-      </h5>
-
-      <hr>
-
-      <dl>
-         <dt>
-            <b><font face="sans-serif" color="green">
-                Smoked Trout
-            </font></b>
-         </dt>
-         <dd>Fluffy scrambled eggs with smoked trout, goat cheese, and 
-             scallions; served with oven-roasted potatoes and toast. 8.45
-         </dd>
-
-         <dt>
-            <b><font face="sans-serif" color="green">
-                French Toast
-            </font></b>
-         </dt>
-         <dd>Three thick slices of French bread dipped in egg batter and 
-             served crisp and golden brown with syrup. 6.25
-         </dd>
-
-         <dt>
-            <b><font face="sans-serif" color="green">
-                Belgian Waffle
-            </font></b>
-         </dt>
-         <dd>Crisp malt Belgian waffle and syrup. 6.95
-         </dd>
-
-         <dt>
-            <b><font face="sans-serif" color="green">
-                Breakfast Fruit Plate
-            </font></b>
-         </dt>
-         <dd>Fresh seasonal fruit with yogurt or cottage cheese and Kelsey's famous 
-             Bran Muffin. 6.95
-         </dd>
-
-         <dt>
-            <b><font face="sans-serif" color="green">
-                Huevos Rancheros
-            </font></b>
-         </dt>
-         <dd>Two eggs on a flour tortilla with thick chili sauce, shredded
-             Monterey Jack, and homemade salsa. 7.95
-         </dd>
-
-         <dt>
-            <b><font face="sans-serif" color="green">
-             Eggs
-            </font></b>
-         </dt>
-         <dd>Any style with oven-roasted potatoes and toast. 5.95
-         </dd>
-
-         <dt>
-            <b><font face="sans-serif" color="green">
-                Lox and Bagels
-            </font></b>
-         </dt>
-         <dd>Nova lox, cream cheese, onion, cucumber, and tomatoes. 8.95
-         </dd>
-      </dl>
-
-   </body>
-  <p>
-  <a href="http://validator.w3.org/check/referer">
-    <img src="http://www.w3.org/Icons/valid-xhtml10"
-         alt="Valid XHTML 1.0 Strict" height="31" width="88" />
-  </a>
-</p>
-
+      document.getElementById("sumResult").textContent = `The sum of x and y is ${sum}.`;
+      document.getElementById("productResult").textContent = `The product of x and y is ${product}.`;
+      document.getElementById("comparisonResult").textContent = comparison;
+    }
+  </script>
+</body>
 </html>
